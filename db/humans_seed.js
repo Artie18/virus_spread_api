@@ -1,6 +1,6 @@
-users = [{
-  name: ''
-  device_id:
-}
-
+users = [
+  {
+    name: ''
+    device_id:
+  }
 ]
