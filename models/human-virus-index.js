@@ -1,4 +1,5 @@
 var HumanVirusSchema = {
+  id: '', // id
   humanId: '', // id of sick human
   virusId: '', // id of a virus
   time: new Date(), // time when he got sick

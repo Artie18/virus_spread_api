@@ -1,4 +1,5 @@
 var KissSchema = {
+  id: '', // uuid key
   lt: '', // latitude
   ln: '', // longitude
   time: new Date(), // time of kiss
