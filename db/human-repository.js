@@ -1,9 +1,11 @@
-var cassandra = require('../lib/cassandra-api');
+var cass = require('../lib/cassandra-api').db;
 
-var db = function () {
+exports.db = function () {
   return {
-    create: function (human) {
-      cassandra.exec('')
+    create: function (h, cb) {
+      cass.exec("INSERT INTO humans (id, name, gender, age) " +
+         "VALUES ("+h.id +",'"+ h.name +"','"+h.gender +"',"+h.age +
+          ");", cb);
     }
   }
 }

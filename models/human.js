@@ -1,17 +1,18 @@
-var rep = require('../db/human-repository');
+var rep = require('../db/human-repository').db();
 
-var HumanSchema = {
-  id: '', // Device id
-  name: , // user name
-  sickWith: [], // Sick ids
-  gender: '',// male, female
-  age: 0 // age of user
+function HumanSchema() {
+  return {
+    id: '', // Device id
+    name: '', // user name
+    sickWith: [], // Sick ids
+    gender: '',// male, female
+    age: 0 // age of user
+  }
 }
 
-var Human = function () {
-
+exports.human = function () {
   return {
-    create: function (cb) {
+    create: function (q, cb) {
       hSchema = new HumanSchema();
       hSchema = {
         id: q.id,
