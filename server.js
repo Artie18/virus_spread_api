@@ -18,6 +18,12 @@ router.get('/', function(req, res) {
   });
 });
 
+router.post('/device/reg', function (req, res) {
+  console.log('Trying to register new user: ' + req.query.id);
+  var human = Human(req.query);
+
+});
+
 app.use('/api', router);
 
 app.listen(port);
