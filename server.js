@@ -10,6 +10,7 @@ var port = process.env.PORT || 4508;
 var router = express.Router();
 
 router.get('/', function(req, res) {
+  console.log('We started to kill Humas with ' +  req.path)
   res.json({
     message: 'VIRUS! Virus Everywhere!',
     apiVersion: '0.0.1',
@@ -20,4 +21,5 @@ router.get('/', function(req, res) {
 app.use('/api', router);
 
 app.listen(port);
+
 console.log('You can "Kill all Humas!" on port: ' + port);
