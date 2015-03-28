@@ -13,6 +13,6 @@ exports.db = function () {
     setSick: function(params, cb) {
       cass.exec_with_params("UPDATE humans SET sickWith = ?" +
         " WHERE id = " + params.id, [params.type], cb);
-    }
+    },
   }
 }

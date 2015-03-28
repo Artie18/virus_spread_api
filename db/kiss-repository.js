@@ -1,6 +1,5 @@
 var cass = require('../lib/cassandra-api').db;
 
-
 exports.db = function () {
   return {
     create: function (k, cb) {
@@ -13,7 +12,7 @@ exports.db = function () {
     updateMeetUp: function (hisId, myId, cb) {
       console.log([myId, hisId])
       cass.exec_with_params("SELECT count(*) FROM kisses WHERE " +
-        "kissedOn = " + myId + " and kissedBy = " + hisId + ";", [], // myId, hisId
+        "kissedOn = ? and kissedBy = ?;", [myId, hisId], //
         function (res, errs) {
           if(errs) {
             cb(null, errs);
@@ -35,7 +34,6 @@ exports.db = function () {
                     "UPDATE meeting_count SET count = ? WHERE kissedBy = ? and kissedOn = ? ",
                     [ newCount, hisId, myId], cb)
                 } else {
-                  console.log('S6')
                   cass.exec_with_params(
                     "INSERT INTO meeting_count (kissedBy, kissedOn, count) VALUES (?, ?, 1)",
                     [hisId, myId], cb)
