@@ -9,6 +9,10 @@ exports.db = function () {
     },
     get: function (id, cb) {
       cass.exec("SELECT * FROM humans WHERE id =" + id, cb)
+    },
+    setSick: function(params, cb) {
+      cass.exec("UPDATE humans SET sickWith = " + params.type +
+        " WHERE deviceId = " + params.id, cb);
     }
   }
 }

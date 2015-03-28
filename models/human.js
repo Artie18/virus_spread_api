@@ -1,4 +1,5 @@
 var rep = require('../db/human-repository').db();
+var kiss  = require('../models/kiss').kiss();
 
 function HumanSchema() {
   return {
@@ -15,7 +16,7 @@ exports.human = function () {
     create: function (q, cb) {
       hSchema = new HumanSchema();
       hSchema = {
-        id: q.id,
+        id: q.deviceId,
         name: q.name,
         gender: q.gender,
         age: q.age
@@ -31,6 +32,13 @@ exports.human = function () {
         }
       })
     },
+    isSick: function (id, type, cb) {
+      params = {id: id, type: type }
+      rep.setSick(params, cb);
+    },
+    whoMadeHimSick: function (id) {
+
+    }
 
   }
 

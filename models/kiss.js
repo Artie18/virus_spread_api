@@ -24,6 +24,13 @@ exports.kiss = function () {
         kissedOn: q.foreignId
       };
       rep.create(kSchema, cb);
+    },
+    wasKissedOn: function (id, cb) {
+      rep.findBy('kissedOn', id, function (result, err) {
+        if(err) { cb(result, err); return; }
+        if(typeof result.rows == 'undefined') { cb(result, err); return; }
+        cb(result, err);
+      });
     }
   }
 }

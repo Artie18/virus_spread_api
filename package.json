@@ -1,11 +1,13 @@
 {
   "name": "virus_spread_api",
   "main": "server.js",
+  "repository": "https://github.com/morpheby/virus_spread_api",
   "dependencies": {
     "express": "~4.0.0",
     "cassandra-driver": "2.0.1",
     "body-parser": "~1.0.1",
     "nodemon": "1.3.7",
-    "node-uuid": "1.4.3"
+    "node-uuid": "1.4.3",
+    "async": "0.9.0"
   }
 }

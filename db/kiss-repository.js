@@ -8,6 +8,14 @@ exports.db = function () {
         "(id, lt, ln, time, kissedBy, kissedOn) " +
         "VALUES (?, ?, ?, ?, ?, ?);",
         params, cb);
+    },
+    findBy: function (param, id, cb) {
+      params = {
+                c: 'kisses',
+                k: param,
+                v: id
+               };
+      cass.findBy(params, cb);
     }
   }
 }

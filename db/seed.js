@@ -28,7 +28,7 @@ db.exec('CREATE TABLE IF NOT EXISTS points (' +
 db.exec('CREATE TABLE IF NOT EXISTS markers (' +
   'id uuid PRIMARY KEY, ' +
   'lt text, ' +
-  'ln text)'), function () { console.log('Created Points')})
+  'ln text)', function () { console.log('Created Points')})
 
 db.exec('CREATE TABLE IF NOT EXISTS human_virus_index (' +
   'id uuid PRIMARY KEY, ' +
@@ -36,4 +36,10 @@ db.exec('CREATE TABLE IF NOT EXISTS human_virus_index (' +
   'virusId text, ' +
   'time timestamp, ' +
   'lat text, ' +
-  'ln text)', function () { console.log('Created Human Virus Index')})
+  'ln text)', function () { console.log('Created Human Virus Index')});
+
+db.exec('ALTER TABLE humans ADD infectedBy uuid', function () { });
+db.exec('CREATE INDEX kisses_kissedOn on kisses(kissedOn)', function () {});
+db.exec('CREATE INDEX kisses_kissedBy on kisses(kissedBy)', function () {});
+
+//create index user_accounts_country on user_accounts(country);

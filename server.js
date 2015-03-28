@@ -5,12 +5,20 @@ var human = require('./models/human').human();
 var kiss  = require('./models/kiss').kiss();
 var virus = require('./models/virus').virus();
 var hvIndex = require('./models/human-virus-index.js').humanVirusIndex();
+var async  = require('async');
+require('./lib/array-helper').help();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(function (req, res, next) {
+  res.contentType('application/json');
+  next();
+});
 
 var port = process.env.PORT || 4508;
 
+
+// TODO Maybe, create some kind of controllers
 var router = express.Router();
 var renderError = function (err) {
   return {
@@ -19,7 +27,6 @@ var renderError = function (err) {
   }
 }
 router.get('/', function(req, res) {
-  console.log('We started to kill Humas with ' +  req.path)
   res.json({
     message: 'VIRUS! Virus Everywhere!',
     apiVersion: '0.0.1',
@@ -29,6 +36,7 @@ router.get('/', function(req, res) {
 
 router.post('/device/reg', function (req, res) {
   console.log('Trying to register new user: ' + req.query.id);
+  console.log(req.body);
   human.create(req.query, function (result, err) {
     if(err) {
       res.write(JSON.stringify(renderError(err)));
@@ -85,18 +93,28 @@ router.post('/virus/new', function (req, res) {
   })
 });
 
+router.get('/markers/all', function (req, res) {
+
+});
+
 router.post('/virus/sick', function (req, res) {
-  console.log('Trying to tell server that user is sick: ' + req.query.id);
   hvIndex.create(req.query, function (result, err) {
     if(err) {
       res.write(JSON.stringify(renderError(err)));
-    } else {
-      res.write(JSON.stringify({
-        status: 200,
-        res: true
-      }))
+      res.end();
+      return;
     }
-    res.end()
+    human.isSick(req.query.deviceId, function (result, err) {
+      if(err) {
+        res.write(JSON.stringify(renderError(err)));
+      } else {
+        res.write(JSON.stringify({
+          status: 200,
+          res: true
+        }));
+      }
+    res.end();
+    });
   });
 });
 
