@@ -6,6 +6,9 @@ exports.db = function () {
       cass.exec("INSERT INTO humans (id, name, gender, age) " +
          "VALUES ("+h.id +",'"+ h.name +"','"+h.gender +"',"+h.age +
           ");", cb);
+    },
+    get: function (id, cb) {
+      cass.exec("SELECT * FROM humans WHERE id =" + id, cb)
     }
   }
 }

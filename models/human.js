@@ -21,7 +21,17 @@ exports.human = function () {
         age: q.age
       }
       rep.create(hSchema, cb);
-    }
+    },
+    get: function (id, cb) {
+      rep.get(id, function (res, err) {
+        if(err) {
+          cb(res, err);
+        } else {
+          cb(res.rows[0], err);
+        }
+      })
+    },
+
   }
 
 }
