@@ -12,12 +12,13 @@ db.exec('CREATE TABLE IF NOT EXISTS viruses (' +
   'description text)', function () { console.log('Created Viruses')})
 
 db.exec('CREATE TABLE IF NOT EXISTS kisses (' +
-  'id uuid PRIMARY KEY, ' +
+  'id uuid, ' +
   'lt text, ' +
   'ln text, ' +
   'time timestamp, ' +
   'kissedBy uuid, ' +
-  'kissedOn uuid)', function () { console.log('Created Kisses')})
+  'kissedOn uuid, ' +
+  'PRIMARY KEY (kissedBy, kissedOn, id) )', function () { console.log('Created Kisses')})
 
 db.exec('CREATE TABLE IF NOT EXISTS points (' +
   'id uuid PRIMARY KEY, ' +
@@ -39,10 +40,10 @@ db.exec('CREATE TABLE IF NOT EXISTS human_virus_index (' +
   'ln text)', function () { console.log('Created Human Virus Index')});
 
 db.exec('CREATE TABLE IF NOT EXISTS meeting_count (' +
-  'kiisedOn uuid, ' +
+  'kissedOn uuid, ' +
   'kissedBy uuid, ' +
   'count int, ' +
-  'PRIMARY KEY(kissedOn, count)', function () { });
+  'PRIMARY KEY (kissedOn, kissedBy))', function () { });
 
 db.exec('ALTER TABLE humans ADD infectedBy uuid', function () { });
 db.exec('CREATE INDEX kisses_kissedOn on kisses(kissedOn)', function () {});
