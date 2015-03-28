@@ -39,6 +39,21 @@ router.post('/device/reg', function (req, res) {
   });
 });
 
+router.get('/device', function (req, res) {
+  console.log('Trying to register new user: ' + req.query.id);
+  human.get(req.query.id, function (result, err) {
+    if(err) {
+      res.write(JSON.stringify(renderError(err)));
+    } else {
+      res.write(JSON.stringify({
+        status: 200,
+        res: result
+      }))
+    }
+    res.end()
+  });
+})
+
 app.use('/api', router);
 
 app.listen(port);
