@@ -24,7 +24,9 @@ exports.db = function () {
         }
         if(result && result.rows) {
           var sorted = new Sort('count', result.rows).array;
-          result = sorted[0][0].kissedby;
+          if(sorted && sorted[0] && sorted[0][0]) {
+            result = sorted[0][0].kissedby;
+          } else { result = null; }
           cb(result, errs);
           return;
         }
