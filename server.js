@@ -83,7 +83,7 @@ router.post('/virus/new', function (req, res) {
     }
     res.end();
   })
-})
+});
 
 router.post('/virus/sick', function (req, res) {
   console.log('Trying to tell server that user is sick: ' + req.query.id);
