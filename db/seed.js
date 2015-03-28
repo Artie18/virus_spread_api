@@ -38,6 +38,12 @@ db.exec('CREATE TABLE IF NOT EXISTS human_virus_index (' +
   'lat text, ' +
   'ln text)', function () { console.log('Created Human Virus Index')});
 
+db.exec('CREATE TABLE IF NOT EXISTS meeting_count (' +
+  'kiisedOn uuid, ' +
+  'kissedBy uuid, ' +
+  'count int, ' +
+  'PRIMARY KEY(kissedOn, count)', function () { });
+
 db.exec('ALTER TABLE humans ADD infectedBy uuid', function () { });
 db.exec('CREATE INDEX kisses_kissedOn on kisses(kissedOn)', function () {});
 db.exec('CREATE INDEX kisses_kissedBy on kisses(kissedBy)', function () {});
