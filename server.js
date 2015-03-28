@@ -104,8 +104,9 @@ router.post('/virus/sick', function (req, res) {
       res.end();
       return;
     }
-    human.isSick(req.query.deviceId, function (result, err) {
+    human.isSick(req.query.deviceId, req.query.type, function (result, err) {
       if(err) {
+        console.log(err)
         res.write(JSON.stringify(renderError(err)));
       } else {
         res.write(JSON.stringify({
@@ -113,7 +114,7 @@ router.post('/virus/sick', function (req, res) {
           res: true
         }));
       }
-    res.end();
+      res.end();
     });
   });
 });

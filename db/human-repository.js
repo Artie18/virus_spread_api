@@ -11,8 +11,8 @@ exports.db = function () {
       cass.exec("SELECT * FROM humans WHERE id =" + id, cb)
     },
     setSick: function(params, cb) {
-      cass.exec("UPDATE humans SET sickWith = " + params.type +
-        " WHERE deviceId = " + params.id, cb);
+      cass.exec_with_params("UPDATE humans SET sickWith = ?" +
+        " WHERE id = " + params.id, [params.type], cb);
     }
   }
 }
