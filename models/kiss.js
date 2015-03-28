@@ -43,8 +43,7 @@ exports.kiss = function () {
       rep.findBy('kissedOn', id, function (result, err) {
         if(err) { cb(result, err); return; }
         if(typeof result.rows == 'undefined') { cb(result, err); return; }
-        rep.create
-        //cb(result, err);
+        rep.create;
       });
     }
   }

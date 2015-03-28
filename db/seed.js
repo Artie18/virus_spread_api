@@ -43,10 +43,12 @@ db.exec('CREATE TABLE IF NOT EXISTS meeting_count (' +
   'kissedOn uuid, ' +
   'kissedBy uuid, ' +
   'count int, ' +
-  'PRIMARY KEY (kissedOn, kissedBy))', function () { });
+  'PRIMARY KEY (kissedOn, kissedBy)) WITH CLUSTERING ORDER BY (count DESC)', function () { });
 
 db.exec('ALTER TABLE humans ADD infectedBy uuid', function () { });
 db.exec('CREATE INDEX kisses_kissedOn on kisses(kissedOn)', function () {});
 db.exec('CREATE INDEX kisses_kissedBy on kisses(kissedBy)', function () {});
+
+
 
 //create index user_accounts_country on user_accounts(country);

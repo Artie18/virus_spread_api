@@ -9,6 +9,7 @@ exports.db = function () {
         "VALUES (?, ?, ?, ?, ?, ?);",
         params, cb);
     },
+    // TODO: This is horrible method, refactor right away
     updateMeetUp: function (hisId, myId, cb) {
       console.log([myId, hisId])
       cass.exec_with_params("SELECT count(*) FROM kisses WHERE " +
@@ -19,9 +20,7 @@ exports.db = function () {
             return;
           }
           if(res && res.rows && res.rows[0].count) {
-            console.log(res.rows[0].count)
             var newCount = parseInt(res.rows[0].count);
-            console.log(newCount);
             cass.exec_with_params(
               "SELECT kissedOn, kissedBy FROM meeting_count WHERE kissedBy = ? and kissedOn = ?",
               [hisId, myId], function (res, errs) {
@@ -43,12 +42,7 @@ exports.db = function () {
         });
     },
     findBy: function (param, id, cb) {
-      params = {
-                c: 'kisses',
-                k: param,
-                v: id
-               };
-      cass.findBy(params, cb);
+      cass.findBy({ c: 'kisses', k: param, v: id }, cb);
     }
   }
 }

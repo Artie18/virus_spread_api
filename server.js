@@ -66,6 +66,7 @@ router.get('/device', function (req, res) {
 });
 
 router.post('/kiss', function (req, res) {
+  console.log("/kiss DEBUG!")
   kiss.create(req.query, function (result, err) {
     if(err) {
       res.write(JSON.stringify(renderError(err)));
