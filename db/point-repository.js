@@ -6,7 +6,7 @@ exports.db = function () {
       params = [p.id, p.lt, p.ln, p.visitedBy]
       cass.exec_with_params("INSERT INTO points " +
         "(id, lt, ln, visitedBy)" +
-        "VALUES (?, ?, ?, ?);", params, cb);
+        "VALUES (?, ?, ?, ?) USING TTL 259200;", params, cb);
     }
   }
 }
