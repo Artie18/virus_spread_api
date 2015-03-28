@@ -19,6 +19,12 @@ db.exec('CREATE TABLE IF NOT EXISTS kisses (' +
   'kissedBy uuid, ' +
   'kissedOn uuid)', function () { console.log('Created Kisses')})
 
+db.exec('CREATE TABLE IF NOT EXISTS points (' +
+  'id uuid PRIMARY KEY, ' +
+  'lt text, ' +
+  'ln text, ' +
+  'visitedBy uuid)', function () { console.log('Created Points')})
+
 db.exec('CREATE TABLE IF NOT EXISTS human_virus_index (' +
   'id uuid PRIMARY KEY, ' +
   'humaId uuid, ' +
