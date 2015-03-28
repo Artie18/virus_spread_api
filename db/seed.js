@@ -11,7 +11,7 @@ db.exec('CREATE TABLE IF NOT EXISTS viruses (' +
   'title text PRIMARY KEY, ' +
   'description text)', function () { console.log('Created Viruses')})
 
-db.exec('CREATE TABLE IF NOT EXISTS kiss (' +
+db.exec('CREATE TABLE IF NOT EXISTS kisses (' +
   'id uuid PRIMARY KEY, ' +
   'lt text, ' +
   'ln text, ' +

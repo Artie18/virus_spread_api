@@ -21,7 +21,7 @@ exports.humanVirusIndex = function () {
         lat: q.location.lat,
         ln: q.location.ln,
         time: q.time
-      }
+      };
       rep.create(hSchema, cb);
     },
   }

@@ -2,6 +2,7 @@ var express = require('express');
 var app     = express();
 var bodyParser = require('body-parser');
 var human = require('./models/human').human();
+var kiss  = require('./models/kiss').kiss();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -35,7 +36,7 @@ router.post('/device/reg', function (req, res) {
         res: true
       }))
     }
-    res.end('That is all!')
+    res.end()
   });
 });
 
@@ -54,7 +55,21 @@ router.get('/device', function (req, res) {
   });
 });
 
-router.post('/virus', function (req, res) {
+router.post('/kiss', function (req, res) {
+  kiss.create(req.query, function (result, err) {
+    if(err) {
+      res.write(JSON.stringify(renderError(err)));
+    } else {
+      res.write(JSON.stringify({
+        status: 200,
+        res: true
+      }))
+    }
+    res.end()
+  });
+});
+
+router.post('/virus/sick', function (req, res) {
   console.log('Trying to tell server that user is sick: ' + req.query.id);
   hvIndex.create(req.query, function (result, err) {
     if(err) {
