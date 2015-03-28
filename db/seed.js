@@ -25,6 +25,11 @@ db.exec('CREATE TABLE IF NOT EXISTS points (' +
   'ln text, ' +
   'visitedBy uuid)', function () { console.log('Created Points')})
 
+db.exec('CREATE TABLE IF NOT EXISTS markers (' +
+  'id uuid PRIMARY KEY, ' +
+  'lt text, ' +
+  'ln text)'), function () { console.log('Created Points')})
+
 db.exec('CREATE TABLE IF NOT EXISTS human_virus_index (' +
   'id uuid PRIMARY KEY, ' +
   'humaId uuid, ' +
