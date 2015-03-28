@@ -32,7 +32,7 @@ router.post('/device/reg', function (req, res) {
     } else {
       res.write(JSON.stringify({
         status: 200,
-        res: result
+        res: true
       }))
     }
     res.end('That is all!')
@@ -40,7 +40,7 @@ router.post('/device/reg', function (req, res) {
 });
 
 router.get('/device', function (req, res) {
-  console.log('Trying to register new user: ' + req.query.id);
+  console.log('Trying to get a user: ' + req.query.id);
   human.get(req.query.id, function (result, err) {
     if(err) {
       res.write(JSON.stringify(renderError(err)));
@@ -52,7 +52,22 @@ router.get('/device', function (req, res) {
     }
     res.end()
   });
-})
+});
+
+router.post('/virus', function (req, res) {
+  console.log('Trying to tell server that user is sick: ' + req.query.id);
+  hvIndex.create(req.query, function (result, err) {
+    if(err) {
+      res.write(JSON.stringify(renderError(err)));
+    } else {
+      res.write(JSON.stringify({
+        status: 200,
+        res: true
+      }))
+    }
+    res.end()
+  });
+});
 
 app.use('/api', router);
 
