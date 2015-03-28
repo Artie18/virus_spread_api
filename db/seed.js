@@ -22,7 +22,7 @@ db.exec('CREATE TABLE IF NOT EXISTS kisses (' +
 db.exec('CREATE TABLE IF NOT EXISTS human_virus_index (' +
   'id uuid PRIMARY KEY, ' +
   'humaId uuid, ' +
-  'virusId uuid, ' +
+  'virusId text, ' +
   'time timestamp, ' +
   'lat text, ' +
   'ln text)', function () { console.log('Created Human Virus Index')})
