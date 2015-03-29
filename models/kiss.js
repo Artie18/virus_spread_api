@@ -15,15 +15,19 @@ function KissSchema() {
 
 exports.kiss = function () {
   return {
+    all: function (cb) {
+      rep.all(cb);
+    },
     create: function (q, cb) {
       var kSchema = {
         id: uuid.v4(),
-        lt: q.location.lt,
+        lt: q.location.lat,
         ln: q.location.ln,
         time: q.time,
         kissedBy: q.foreignId,
         kissedOn: q.deviceId
       };
+
       hRep.get(q.foreignId, function (him, err) {
         if(him && him.rows && him.rows[0].sickwith) {
           rep.create(kSchema, function (result, err) {

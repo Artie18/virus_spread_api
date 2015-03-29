@@ -6,12 +6,15 @@ exports.db = function () {
       params = [k.id, k.lt, k.ln, k.time, k.kissedBy, k.kissedOn]
       cass.exec_with_params("INSERT INTO kisses " +
         "(id, lt, ln, time, kissedBy, kissedOn) " +
-        "VALUES (?, ?, ?, ?, ?, ?);",
+        "VALUES (?, ?, ?, ?, ?, ?) USING TTL 172800;",
         params, cb);
+    },
+    all: function (cb) {
+      query = "SELECT * FROM kisses;"
+      cass.exec(query, cb);
     },
     // TODO: This is horrible method, refactor right away
     updateMeetUp: function (hisId, myId, cb) {
-      console.log([myId, hisId])
       cass.exec_with_params("SELECT count(*) FROM kisses WHERE " +
         "kissedOn = ? and kissedBy = ?;", [myId, hisId], //
         function (res, errs) {

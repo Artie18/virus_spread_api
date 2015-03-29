@@ -12,6 +12,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(function (req, res, next) {
   res.contentType('application/json');
+  res.header('Access-Control-Allow-Origin', '*')
   next();
 });
 
@@ -65,6 +66,7 @@ router.get('/device', function (req, res) {
   });
 });
 
+
 router.post('/kiss', function (req, res) {
   console.log("/kiss DEBUG!")
   kiss.create(req.query, function (result, err) {
@@ -95,7 +97,17 @@ router.post('/virus/new', function (req, res) {
 });
 
 router.get('/markers/all', function (req, res) {
-
+  kiss.all(function (result, err) {
+    if(err) {
+      res.write(JSON.stringify(renderError(err)));
+    } else {
+      res.write(JSON.stringify({
+        status: 200,
+        res: result.rows
+      }));
+    }
+    res.end();
+  })
 });
 
 router.post('/virus/sick', function (req, res) {
