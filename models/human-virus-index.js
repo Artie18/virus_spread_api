@@ -16,7 +16,7 @@ exports.humanVirusIndex = function () {
   return {
     create: function (q, cb) {
       var hvSchema = {
-        id: uuid.v4(),
+        id: uuid.v4() + '',
         humanId: q.deviceId,
         virusId: q.type,
         lat: q.location.lat,

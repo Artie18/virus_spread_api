@@ -20,7 +20,7 @@ exports.kiss = function () {
     },
     create: function (q, cb) {
       var kSchema = {
-        id: uuid.v4(),
+        id: uuid.v4() + '',
         lt: q.location.lat,
         ln: q.location.ln,
         time: q.time,
@@ -28,8 +28,8 @@ exports.kiss = function () {
         kissedOn: q.deviceId
       };
 
-      hRep.get(q.foreignId, function (him, err) {
-        if(him && him.rows && him.rows[0].sickwith) {
+      hRep.get(q.foreignId + '', function (him, err) {
+        if(him && him[0].sickWith) {
           rep.create(kSchema, function (result, err) {
             if(err) {
               cb(null, err);
@@ -44,7 +44,7 @@ exports.kiss = function () {
 
     },
     wasKissedOn: function (id, cb) {
-      rep.findBy('kissedOn', id, function (result, err) {
+      rep.findBy('kissedOn', id + '', function (result, err) {
         if(err) { cb(result, err); return; }
         if(typeof result.rows == 'undefined') { cb(result, err); return; }
         rep.create;

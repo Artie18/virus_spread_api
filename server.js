@@ -6,6 +6,7 @@ var kiss  = require('./models/kiss').kiss();
 var virus = require('./models/virus').virus();
 var hvIndex = require('./models/human-virus-index.js').humanVirusIndex();
 var async  = require('async');
+var config = require('./config.json');
 require('./lib/array-helper').help();
 
 app.use(bodyParser.urlencoded({ extended: true }));

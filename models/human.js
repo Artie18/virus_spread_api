@@ -33,7 +33,7 @@ exports.human = function () {
       })
     },
     isSick: function (id, type, cb) {
-      params = { id: id, type: [type] }
+      params = { id: id, type: type }
       rep.whoMadeMeSick(id, function (result, err) {
         params.infectedBy = result;
         rep.setSick(params, cb);

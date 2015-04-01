@@ -11,7 +11,7 @@ exports.marker = function () {
   return {
     create: function (q, cb) {
       marker = {
-        id: uuid.v4(),
+        id: uuid.v4() + '',
         lt: q.location.lt,
         ln: q.location.ln,
       }
