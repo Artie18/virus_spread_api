@@ -49,6 +49,6 @@ db.exec('ALTER TABLE humans ADD COLUMN infectedBy uuid', function () { });
 db.exec('CREATE INDEX kisses_kissedOn on kisses(kissedOn)', function () {});
 db.exec('CREATE INDEX kisses_kissedBy on kisses(kissedBy)', function () {});
 
-
+process.exit();
 
 //create index user_accounts_country on user_accounts(country);
