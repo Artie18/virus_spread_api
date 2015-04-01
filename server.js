@@ -17,7 +17,7 @@ app.use(function (req, res, next) {
   next();
 });
 
-var port = config.port || 4508;
+var port = process.env.PORT || config.port || 4508;
 
 
 // TODO Maybe, create some kind of controllers
