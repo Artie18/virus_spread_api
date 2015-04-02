@@ -7,6 +7,7 @@ var virus = require('./models/virus').virus();
 var hvIndex = require('./models/human-virus-index.js').humanVirusIndex();
 var async  = require('async');
 var config = require('./config.json');
+var path = require('path');
 require('./lib/array-helper').help();
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -16,6 +17,9 @@ app.use(function (req, res, next) {
   res.header('Access-Control-Allow-Origin', '*')
   next();
 });
+
+app.set('views', './app/views');
+app.use(express.static(path.join(__dirname,'public')));
 
 var port = process.env.PORT || config.port || 4508;
 
@@ -28,7 +32,14 @@ var renderError = function (err) {
     message: err
   }
 }
-router.get('/', function(req, res) {
+
+router.get('/', function (req, res) {
+  res.contentType('text/html');
+  // res.header('Access-Control-Allow-Origin', '*')
+  res.sendfile('./app/views/index.html');
+});
+
+router.get('/api/', function(req, res) {
   res.json({
     message: 'VIRUS! Virus Everywhere!',
     apiVersion: '0.0.1',
@@ -36,7 +47,7 @@ router.get('/', function(req, res) {
   });
 });
 
-router.post('/device/reg', function (req, res) {
+router.post('/api/device/reg', function (req, res) {
   console.log('Trying to register new user: ' + req.query.id);
   console.log(req.body);
   human.create(req.query, function (result, err) {
@@ -52,7 +63,7 @@ router.post('/device/reg', function (req, res) {
   });
 });
 
-router.get('/device', function (req, res) {
+router.get('/api/device', function (req, res) {
   console.log('Trying to get a user: ' + req.query.id);
   human.get(req.query.id, function (result, err) {
     if(err) {
@@ -68,7 +79,7 @@ router.get('/device', function (req, res) {
 });
 
 
-router.post('/kiss', function (req, res) {
+router.post('/api/kiss', function (req, res) {
   console.log("/kiss DEBUG!")
   kiss.create(req.query, function (result, err) {
     if(err) {
@@ -83,7 +94,7 @@ router.post('/kiss', function (req, res) {
   });
 });
 
-router.post('/virus/new', function (req, res) {
+router.post('/api/virus/new', function (req, res) {
   virus.create(req.query, function (result, err) {
     if(err) {
       res.write(JSON.stringify(renderError(err)));
@@ -97,21 +108,21 @@ router.post('/virus/new', function (req, res) {
   })
 });
 
-router.get('/markers/all', function (req, res) {
+router.get('/api/markers/all', function (req, res) {
   kiss.all(function (result, err) {
     if(err) {
       res.write(JSON.stringify(renderError(err)));
     } else {
       res.write(JSON.stringify({
         status: 200,
-        res: result.rows
+        res: result
       }));
     }
     res.end();
   })
 });
 
-router.post('/virus/sick', function (req, res) {
+router.post('/api/virus/sick', function (req, res) {
   hvIndex.create(req.query, function (result, err) {
     if(err) {
       res.write(JSON.stringify(renderError(err)));
@@ -133,7 +144,7 @@ router.post('/virus/sick', function (req, res) {
   });
 });
 
-app.use('/api', router);
+app.use('/', router);
 
 app.listen(port);
 

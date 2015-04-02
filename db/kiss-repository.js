@@ -11,7 +11,7 @@ exports.db = function () {
     },
     all: function (cb) {
       query = "SELECT * FROM kisses;"
-      cass.exec_all(query, cb);
+      cass.exec_all(query, [], cb);
     },
     // TODO: This is horrible method, refactor right away
     updateMeetUp: function (hisId, myId, cb) {
