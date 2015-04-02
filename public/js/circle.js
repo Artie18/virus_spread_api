@@ -7,7 +7,7 @@ $(document).ready(function () {
 function init() {
 
   $.ajax({
-    url: "http://127.0.0.1:4508/api/markers/all",
+    url: "http://virusspread.herokuapp.com/api/markers/all",
     type: "GET",
     success: function(data) {
 
