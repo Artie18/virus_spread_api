@@ -29,7 +29,7 @@ exports.kiss = function () {
       };
 
       hRep.get(q.foreignId + '', function (him, err) {
-        if(him && him[0].sickWith) {
+        if(him && him[0] && him[0].sickWith) {
           rep.create(kSchema, function (result, err) {
             if(err) {
               cb(null, err);
