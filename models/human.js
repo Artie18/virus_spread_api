@@ -25,10 +25,10 @@ exports.human = function () {
     },
     get: function (id, cb) {
       rep.get(id, function (res, err) {
-        if(err) {
+        if(err || typeof res == 'undefined') {
           cb(res, err);
         } else {
-          cb(res.rows[0], err);
+          cb(res[0], err);
         }
       })
     },
