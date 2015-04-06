@@ -25,7 +25,7 @@ exports.human = function () {
     },
     get: function (id, cb) {
       rep.get(id, function (res, err) {
-        if(err || typeof res == 'undefined') {
+        if(err) {
           cb(res, err);
         } else {
           cb(res[0], err);
