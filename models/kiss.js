@@ -1,5 +1,5 @@
-var rep  = require('../db/kiss-repository').db();
-var hRep = require('../db/human-repository').db();
+var rep  = require('../db/repos/kiss-repository').db();
+var hRep = require('../db/repos/human-repository').db();
 var uuid = require('node-uuid');
 
 function KissSchema() {

@@ -1,11 +1,11 @@
-var rep = require('../db/point-repository').db();
+var rep = require('../db/repos/point-repository').db();
 var uuid = require('node-uuid');
 
 function pointSchema() {
-  id: '', // uuid id
-  lt: '',
-  ln: '',
-  visitedBy: '', // user id who visited this place
+  id: ''        , // uuid id
+  lt: ''        ,
+  ln: ''        ,
+  visitedBy: '' // user id who visited this place
 }
 
 exports.point = function () {

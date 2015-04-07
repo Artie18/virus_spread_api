@@ -1,4 +1,4 @@
-var rep = require('../db/human-repository').db();
+var rep = require('../db/repos/human-repository').db();
 var kiss  = require('../models/kiss').kiss();
 
 function HumanSchema() {

@@ -1,4 +1,4 @@
-var rep = require('../db/virus-repository').db();
+var rep = require('../db/repos/virus-repository').db();
 
 var VirusSchema = {
   title: '', // Virus title

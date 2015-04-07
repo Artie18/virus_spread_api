@@ -1,4 +1,4 @@
-var rep = require('../db/marker-repository').db();
+var rep = require('../db/repos/marker-repository').db();
 var uuid = require('node-uuid');
 
 function markerSchema() {
