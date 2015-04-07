@@ -1,4 +1,4 @@
-var rep = require('../db/repos/human-virus-index-repository').db();
+var rep = require('../db/repos/proxy/human-virus-index-repository').db();
 var uuid = require('node-uuid');
 
 function humanVirusSchema() {

@@ -1,4 +1,4 @@
-var cass = require('../../lib/sqlite-api').db;
+var cass = require('../../../lib/sqlite-api').db;
 var Sort = require('sorted-object-array');
 
 exports.db = function () {

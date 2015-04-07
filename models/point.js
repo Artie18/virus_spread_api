@@ -1,4 +1,4 @@
-var rep = require('../db/repos/point-repository').db();
+var rep = require('../db/repos/proxy/point-repository').db();
 var uuid = require('node-uuid');
 
 function pointSchema() {
