@@ -1,11 +1,11 @@
 var rep = require('../db/repos/proxy/marker-repository').db();
 var uuid = require('node-uuid');
 
-function markerSchema() {
-  id: '', // uuid id
-  lt: '',
-  ln: ''
-}
+//function markerSchema() {
+//  id: '', // uuid id
+//  lt: '',
+//  ln: ''
+//}
 
 exports.marker = function () {
   return {

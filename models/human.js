@@ -1,20 +1,19 @@
 var rep = require('../db/repos/proxy/human-repository').db();
 var kiss  = require('../models/kiss').kiss();
 
-function HumanSchema() {
-  return {
-    id: '', // Device id
-    name: '', // user name
-    sickWith: [], // Sick ids
-    gender: '',// male, female
-    age: 0 // age of user
-  }
-}
+//function HumanSchema() {
+//  return {
+//    id: '', // Device id
+//    name: '', // user name
+//    sickWith: [], // Sick ids
+//    gender: '',// male, female
+//    age: 0 // age of user
+//  }
+//}
 
 exports.human = function () {
   return {
     create: function (q, cb) {
-      hSchema = new HumanSchema();
       hSchema = {
         id: q.deviceId,
         name: q.name,
@@ -33,7 +32,7 @@ exports.human = function () {
       })
     },
     isSick: function (id, type, cb) {
-      params = { id: id, type: type }
+      var params = { id: id, type: type }
       rep.whoMadeMeSick(id, function (result, err) {
         params.infectedBy = result;
         rep.setSick(params, cb);

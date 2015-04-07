@@ -1,16 +1,16 @@
 var rep = require('../db/repos/proxy/human-virus-index-repository').db();
 var uuid = require('node-uuid');
 
-function humanVirusSchema() {
-  return {
-    id: '', // id
-    humanId: '', // id of sick human
-    virusId: '', // id of a virus
-    time: new Date(), // time when he got sick
-    lat: '', // lat of loc where he got sick
-    ln: ''   // ln of loc where he got sick
-  }
-}
+//function humanVirusSchema() {
+//  return {
+//    id: '', // id
+//    humanId: '', // id of sick human
+//    virusId: '', // id of a virus
+//    time: new Date(), // time when he got sick
+//    lat: '', // lat of loc where he got sick
+//    ln: ''   // ln of loc where he got sick
+//  }
+//}
 
 exports.humanVirusIndex = function () {
   return {

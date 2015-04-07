@@ -1,12 +1,12 @@
 var rep = require('../db/repos/proxy/point-repository').db();
 var uuid = require('node-uuid');
 
-function pointSchema() {
-  id: ''        , // uuid id
-  lt: ''        ,
-  ln: ''        ,
-  visitedBy: '' // user id who visited this place
-}
+//function pointSchema() {
+//  id: ''        , // uuid id
+//  lt: ''        ,
+//  ln: ''        ,
+//  visitedBy: '' // user id who visited this place
+//}
 
 exports.point = function () {
   return {

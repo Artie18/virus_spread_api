@@ -1,9 +1,9 @@
 var rep = require('../db/repos/proxy/virus-repository').db();
 
-var VirusSchema = {
-  title: '', // Virus title
-  descriprion: '' // Virus description
-}
+//var VirusSchema = {
+//  title: '', // Virus title
+//  descriprion: '' // Virus description
+//}
 
 exports.virus = function () {
   return {

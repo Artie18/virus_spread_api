@@ -2,16 +2,16 @@ var rep  = require('../db/repos/proxy/kiss-repository').db();
 var hRep = require('../db/repos/proxy/human-repository').db();
 var uuid = require('node-uuid');
 
-function KissSchema() {
-  return {
-    id: '', // uuid key
-    lt: '', // latitude
-    ln: '', // longitude
-    time: new Date(), // time of kiss
-    kissedBy: '', // id of human who kissed
-    kissedOn: ''  // id of human kiss reciver
-  }
-}
+//function KissSchema() {
+//  return {
+//    id: '', // uuid key
+//    lt: '', // latitude
+//    ln: '', // longitude
+//    time: new Date(), // time of kiss
+//    kissedBy: '', // id of human who kissed
+//    kissedOn: ''  // id of human kiss reciver
+//  }
+//}
 
 exports.kiss = function () {
   return {
