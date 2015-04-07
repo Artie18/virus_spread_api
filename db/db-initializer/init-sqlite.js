@@ -1,9 +1,9 @@
-var db = require('../lib/cassandra-api').db;
+var db = require('../../lib/sqlite-api').db;
 
 db.exec('CREATE TABLE IF NOT EXISTS humans (' +
   'id uuid PRIMARY KEY, ' +
   'name text, ' +
-  'sickWith set<text>, ' +
+  'sickWith text, ' +
   'gender text, ' +
   'age int )', function () { console.log('Created humans')})
 
@@ -43,12 +43,12 @@ db.exec('CREATE TABLE IF NOT EXISTS meeting_count (' +
   'kissedOn uuid, ' +
   'kissedBy uuid, ' +
   'count int, ' +
-  'PRIMARY KEY (kissedOn, kissedBy)) WITH CLUSTERING ORDER BY (count DESC)', function () { });
+  'PRIMARY KEY (kissedOn, kissedBy))', function () { });
 
-db.exec('ALTER TABLE humans ADD infectedBy uuid', function () { });
+db.exec('ALTER TABLE humans ADD COLUMN infectedBy uuid', function () { });
 db.exec('CREATE INDEX kisses_kissedOn on kisses(kissedOn)', function () {});
 db.exec('CREATE INDEX kisses_kissedBy on kisses(kissedBy)', function () {});
 
-
+process.exit();
 
 //create index user_accounts_country on user_accounts(country);

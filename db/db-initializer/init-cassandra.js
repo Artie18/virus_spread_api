@@ -1,4 +1,4 @@
-var db = require('../lib/cassandra-api').db;
+var db = require('../../lib/cassandra-api').db;
 
 db.exec('CREATE TABLE IF NOT EXISTS humans (' +
   'id uuid PRIMARY KEY, ' +
@@ -18,7 +18,7 @@ db.exec('CREATE TABLE IF NOT EXISTS kisses (' +
   'time timestamp, ' +
   'kissedBy uuid, ' +
   'kissedOn uuid, ' +
-  'PRIMARY KEY (kissedBy, kissedOn, id) )', function () { console.log('Created Kisses')})
+  'PRIMARY KEY (kissedBy, kissedOn, id, time) )', function () { console.log('Created Kisses')})
 
 db.exec('CREATE TABLE IF NOT EXISTS points (' +
   'id uuid PRIMARY KEY, ' +

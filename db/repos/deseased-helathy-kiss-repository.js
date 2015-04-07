@@ -10,6 +10,7 @@ exports.db = function () {
         params, cb);
     },
     find_and_destroy: function (param, id, cb) {
+      //TODO: Implement
     }
   }
-}
+};
