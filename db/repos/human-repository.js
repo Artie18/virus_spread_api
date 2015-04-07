@@ -1,4 +1,4 @@
-var cass = require('../lib/sqlite-api').db;
+var cass = require('../../lib/sqlite-api').db;
 var Sort = require('sorted-object-array');
 
 exports.db = function () {
@@ -27,7 +27,9 @@ exports.db = function () {
           var sorted = new Sort('count', result.rows).array;
           if(sorted && sorted[0] && sorted[0][0]) {
             result = sorted[0][0].kissedby;
-          } else { result = null; }
+          } else {
+            result = null;
+          }
           cb(result, errs);
           return;
         }

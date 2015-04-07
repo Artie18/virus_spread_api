@@ -1,4 +1,4 @@
-var cass = require('../lib/sqlite-api').db;
+var cass = require('../../lib/sqlite-api').db;
 
 exports.db = function () {
   return {
