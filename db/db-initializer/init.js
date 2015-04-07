@@ -1,4 +1,4 @@
-var db = process.env.DB || require('../../config.json') || 'SQLite3';
+var db = process.env.DB || require('../../config.json').db || 'SQLite3';
 
 function initSqlite() {
     require('./init-sqlite');
