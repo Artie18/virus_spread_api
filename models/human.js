@@ -23,6 +23,19 @@ exports.human = function () {
       }
       rep.create(hSchema, cb);
     },
+    update: function (q, cb) {
+      params = {}
+      if(typeof q.deviceId == "undefined") {
+        cb(null, {status: "No ID"});
+        return;
+      }
+      Object.keys(q).forEach(function (k) {
+        if(k == 'deviceId') {} else {
+          params[k] = q[k];
+        }
+      });
+      rep.update(q.deviceId, params, cb);
+    },
     get: function (id, cb) {
       rep.get(id, function (res, err) {
         if(err) {
