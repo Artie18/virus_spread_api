@@ -8,6 +8,32 @@ exports.db = function () {
          "VALUES ('"+ h.id +"','"+ h.name +"','"+h.gender +"',"+h.age +
           ");", cb);
     },
+    update: function (id, params, cb) {
+      this.get(id, function (res, err) {
+        if(res.length < 1) {
+          cb(null, {message: "No User"})
+        }
+        var keysStr = " ";
+        var vals = [];
+        var allParams = Object.keys(params);
+        // Need better solution, but not now. We doing refactoring anyway
+        for(var i = 0; i < allParams.length; i++) {
+          if(i < allParams.length - 1) {
+            keysStr += allParams[i] + " = ?, ";
+          } else {
+            keysStr += allParams[i] + " = ? ";
+          }
+
+          vals.push(params[allParams[i]]);
+        }
+        allParams.forEach(function (k) {
+
+        });
+        vals.push(id);
+        cass.exec_with_params("UPDATE humans SET " + keysStr + " WHERE id = ?", vals, cb);
+      });
+
+    },
     get: function (id, cb) {
       cass.exec_all("SELECT * FROM humans WHERE id = ?", [id], cb)
     },

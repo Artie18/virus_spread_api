@@ -48,6 +48,21 @@ router.get('/api/', function(req, res) {
   });
 });
 
+router.post('/api/device/update', function (req, res) {
+  console.log('Trying to update new user: ' + req.query.id);
+  human.update(req.query, function (result, err) {
+    if(err) {
+      res.write(JSON.stringify(renderError(err)));
+    } else {
+      res.write(JSON.stringify({
+        status: 200,
+        res: true
+      }))
+    }
+    res.end()
+  });
+});
+
 router.post('/api/device/reg', function (req, res) {
   console.log('Trying to register new user: ' + req.query.id);
   console.log(req.body);
