@@ -1,3 +1,6 @@
+// GLOBAL CONFIG VARS
+DATABASE = process.env.DB || require('./config.json').db || 'SQLite3';
+
 var express = require('express');
 var app     = express();
 var bodyParser = require('body-parser');
@@ -8,11 +11,13 @@ var hvIndex = require('./models/human-virus-index.js').humanVirusIndex();
 var async  = require('async');
 var config = require('./config.json');
 var path = require('path');
+
 require('newrelic');
 require('./lib/array-helper').help();
 
+
+
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
 app.use(function (req, res, next) {
   res.contentType('application/json');
   res.header('Access-Control-Allow-Origin', '*')
@@ -21,7 +26,7 @@ app.use(function (req, res, next) {
 
 app.set('views', './app/views');
 app.use(express.static(path.join(__dirname,'public')));
-
+console.log(process.env.TEST);
 var port = process.env.PORT || config.port || 4508;
 
 

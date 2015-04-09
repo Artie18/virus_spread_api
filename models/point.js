@@ -16,7 +16,7 @@ exports.point = function () {
         lt: q.location.lt,
         ln: q.location.ln,
         visitedBy: q.deviceId
-      }
+      };
       rep.create(point, cb);
     }
   }

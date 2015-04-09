@@ -1,4 +1,5 @@
 var cass = require('../../../lib/sqlite-api').db;
+var query_builder = require('../query_builder');
 
 exports.db = function () {
   return {
