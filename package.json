@@ -4,7 +4,7 @@
   "repository": "https://github.com/morpheby/virus_spread_api",
   "scripts": {
     "postinstall": "node ./db/init_sqllite.js",
-    "start": "pm2 start server.js"
+    "start": "node server.js"
     },
   "dependencies": {
     "pm2": "0.12.10",
