@@ -4,9 +4,10 @@
   "repository": "https://github.com/morpheby/virus_spread_api",
   "scripts": {
     "postinstall": "node ./db/init_sqllite.js",
-    "start": "nodemon server.js"
+    "start": "pm2 start server.js"
     },
   "dependencies": {
+    "pm2": "0.12.10",
     "express": "~4.0.0",
     "cassandra-driver": "2.0.1",
     "body-parser": "~1.0.1",

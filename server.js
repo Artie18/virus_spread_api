@@ -56,7 +56,7 @@ router.post('/api/device/update', function (req, res) {
     } else {
       res.write(JSON.stringify({
         status: 200,
-        res: true
+        res: result
       }))
     }
     res.end()
