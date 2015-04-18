@@ -1,6 +1,9 @@
 # Logs
 logs
 *.log
+*.DS_Store
+.idea
+virus_spread
 
 # Runtime data
 pids
