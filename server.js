@@ -19,6 +19,11 @@ app.use(function (req, res, next) {
   next();
 });
 
+app.use('/css/*', function (req,res,next) {
+  res.contentType('text/css');
+  next();
+})
+
 app.set('views', './app/views');
 app.use(express.static(path.join(__dirname,'public')));
 
@@ -36,9 +41,13 @@ var renderError = function (err) {
 
 router.get('/', function (req, res) {
   res.contentType('text/html');
-  // res.header('Access-Control-Allow-Origin', '*')
   res.sendfile('./app/views/index.html');
 });
+
+router.get('/about', function (req, res) {
+  res.contentType('text/html');
+  res.sendfile('./app/views/about.html');
+})
 
 router.get('/api/', function(req, res) {
   res.json({
