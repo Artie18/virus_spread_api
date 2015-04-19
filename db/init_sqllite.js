@@ -45,7 +45,10 @@ db.exec('CREATE TABLE IF NOT EXISTS meeting_count (' +
   'count int, ' +
   'PRIMARY KEY (kissedOn, kissedBy))', function () { });
 
-db.exec('ALTER TABLE humans ADD COLUMN infectedBy uuid', function () { });
+db.exec('ALTER TABLE humans ADD COLUMN infectedBy uuid', function (err,res) {
+  console.log('Errors are: ' + err);
+  console.log('Res are: ' + res);
+});
 db.exec('CREATE INDEX kisses_kissedOn on kisses(kissedOn)', function () {});
 db.exec('CREATE INDEX kisses_kissedBy on kisses(kissedBy)', function () {});
 
