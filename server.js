@@ -19,6 +19,11 @@ app.use(function (req, res, next) {
   next();
 });
 
+app.use('/css/*', function (req,res,next) {
+  res.contentType('text/css');
+  next();
+})
+
 app.set('views', './app/views');
 app.use(express.static(path.join(__dirname,'public')));
 
