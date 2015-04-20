@@ -3,7 +3,7 @@ jQuery(document).ready(function($){
 	$('.cd-nav-trigger').on('click', function(event){
 		event.preventDefault();
     if(window.innerWidth <= 980) {
-      window.location.replace('/about');
+      window.location.href = '/about';
     } else {
       toggleNav(true);
     }
