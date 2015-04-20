@@ -1,11 +1,27 @@
 {
   "name": "virus_spread_api",
+  "description": "Open Source app for people who is tired to Get Sick every winter. \
+        We provide Web App that shows potential Danger Zone where you can get sick with airborne diseases. ",
+  "version": "2.0",
   "main": "server.js",
-  "repository": "https://github.com/morpheby/virus_spread_api",
+  "repository": {
+        "type": "git",
+        "url": "https://github.com/morpheby/virus_spread_api"
+  },
+  "author": {
+    "name": "Artyom Fedenko",
+    "email": "a.fedenko@blankpagelabs.com"
+  },
   "scripts": {
     "postinstall": "node ./db/init_sqllite.js",
     "start": "node server.js"
-    },
+  },
+  "contributors": [
+    {
+      "name": "Artyom Fedenko",
+      "email": "a.fedenko@blankpagelabs.com"
+    }
+  ],
   "dependencies": {
     "pm2": "0.12.10",
     "express": "~4.0.0",
