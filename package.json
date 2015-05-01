@@ -1,8 +1,7 @@
 {
   "name": "virus_spread_api",
-  "description": "Open Source app for people who is tired to Get Sick every winter. \
-        We provide Web App that shows potential Danger Zone where you can get sick with airborne diseases. ",
-  "version": "2.0",
+  "description": "Open Source app for people who is tired to Get Sick every winter. We provide Web App that shows potential Danger Zone where you can get sick with airborne diseases. ",
+  "version": "2.0.0",
   "main": "server.js",
   "repository": {
         "type": "git",
