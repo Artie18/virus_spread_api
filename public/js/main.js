@@ -8,6 +8,7 @@ jQuery(document).ready(function($){
       toggleNav(true);
     }
 	});
+	
 	//close the navigation
 	$('.cd-close-nav, .cd-overlay').on('click', function(event){
 		event.preventDefault();
