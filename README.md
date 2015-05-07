@@ -37,8 +37,6 @@ You can see other technologies in our package.json file
 
 
 ## Aditional Info:
-  The app is Right now in Public Alpha, and you can see the app [here](virusspread.blankpagelabs.com).
+  The app is Right now in Public Alpha, and you can see the app [here](http://virusspread.blankpagelabs.com).
 
 If You whant to take a look at IOS Beta app just contact me via email on a.fedenko@blankpagelabs.com
-
-Created at [![WHTBY](http://html5.by/wp-content/uploads/2014/10/wth-main.png)](https://www.facebook.com/groups/wthby)
