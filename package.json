@@ -13,7 +13,7 @@
   },
   "scripts": {
     "postinstall": "node ./db/init_sqllite.js",
-    "start": "node server.js"
+    "start": "nodemon server.js"
   },
   "contributors": [
     {
