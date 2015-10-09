@@ -32,6 +32,6 @@
     "sorted-object-array": "1.0.0",
     "nodejs-websocket": "1.2.1",
     "sqlite3": "3.1.0",
-    "newrelic": "1.18.1"
+    "newrelic": "1.22.1"
   }
 }
